@@ -1,22 +1,22 @@
 #define BLYNK_PRINT Serial
 
-#include <WiFi.h>
-#include <BlynkSimpleEsp32.h>
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
 
 #define BLYNK_TEMPLATE_ID "TMPL6JCULZWSJ"
 #define BLYNK_TEMPLATE_NAME "slingshot"
 #define BLYNK_AUTH_TOKEN "eMzwNXRUkYt59yi6qsxoxqAqVn4-YPtV"
 
-const char* ssid = "ARVR";
-const char* pass = "STIC_LMES@007";
+char ssid[] = "ARVR";
+char pass[] = "STIC_LMES@007";
 
-// Use GPIO 14 (D5) pin for the IR sensor on the ESP32
-int IR_sensor = 14;
+// Use the D5 pin for the IR sensor on the ESP8266 D1 Mini
+int IR_sensor = D5;
 int value = 0;
 
 void setup() {
   pinMode(IR_sensor, INPUT);
-  Serial.begin(115200);
+  Serial.begin(9600);
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
 }
 
